@@ -1,6 +1,6 @@
 // import React, {useState } from 'react';
 import Product from "./product";
-import React from 'react';
+import React, {useState} from 'react';
 
 
 
@@ -8,29 +8,29 @@ import React from 'react';
 
 // class component!!!!!!!!!!!!!!!!!!!
 
-class App extends React.Component{
+// class App extends React.Component{
 
-    state = {
-        Products:[
-            {title:"react.js", price:"99$"},
-            {title:"node.js", price:"89$"},
-            {title:"vue.js", price:"79$"},
-        ]
-    }
+//     state = {
+//         Products:[
+//             {title:"react.js", price:"99$"},
+//             {title:"node.js", price:"89$"},
+//             {title:"vue.js", price:"79$"},
+//         ]
+//     }
 
-    render() {
-        return(
-             <div className='container' id='title'>
-             <h1>shopping app</h1>
-            {this.state.Products.map((product) =>{
-                return <Product name={product.title} price={product.price} />;
-            })}
-             </div>
+//     render() {
+//         return(
+//              <div className='container' id='title'>
+//              <h1>shopping app</h1>
+//             {this.state.Products.map((product) =>{
+//                 return <Product name={product.title} price={product.price} />;
+//             })}
+//              </div>
             
-        );
-    };
-}
-export default App;
+//         );
+//     };
+// }
+// export default App;
 
 // const App = ()=> {
 //   return (
@@ -50,32 +50,32 @@ export default App;
 
 
 
-// const App = () => {
+const App = () => {
 
-//   const [products,setProducts] = useState([
-//     {title: "react.js", price: "99$"},
-//     {title: "node.js", price: "89$"},
-//     {title: "java.js", price: "79$"},
-//   ]);
+  const [products,setProducts] = useState([
+    {title: "react.js", price: "99$"},
+    {title: "node.js", price: "89$"},
+    {title: "java.js", price: "79$"},
+  ]);
 
-//   const clickHandler = () => {
-//     setProducts([
-//       {title: "react.js", price: "79$"},
-//       {title: "node.js", price: "69$"},
-//       {title: "java.js", price: "59$"},
-//     ]);
-//   };
+  const clickHandler = () => {
+    setProducts([
+      {title: "react.js", price: "79$"},
+      {title: "node.js", price: "69$"},
+      {title: "java.js", price: "59$"},
+    ]);
+  };
 
-//   return ( 
-//   <div className='container' id='title'>
-//     <h1>shopping app</h1>
-//     {products.map((product) =>{
-//       return <product name={product.title} price={product.price} />;
-//     })}
-//     <button onClick={clickHandler}>Change Price</button>
-//   </div> 
-//   );
-// };
+  return ( 
+  <div className='container' id='title'>
+    <h1>shopping app</h1>
+    {products.map((product) =>{
+      return <Product name={product.title} price={product.price} />;
+    })}
+    <button onClick={clickHandler}>Change Price</button>
+  </div> 
+  );
+};
  
-// export default App;
+export default App;
 
