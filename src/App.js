@@ -1,7 +1,7 @@
 // import React, {useState } from 'react';
 import Product from "./product";
 import React, {useState} from 'react';
-
+import './app.css'
 
 
 
@@ -53,16 +53,16 @@ import React, {useState} from 'react';
 const App = () => {
 
   const [products,setProducts] = useState([
-    {title: "react.js", price: "99$"},
-    {title: "node.js", price: "89$"},
-    {title: "java.js", price: "79$"},
+    {title: "react.js", price: "99$", id: 1},
+    {title: "node.js", price: "89$", id: 2},
+    {title: "java.js", price: "79$", id: 3},
   ]);
 
   const clickHandler = () => {
     setProducts([
-      {title: "react.js", price: "79$"},
-      {title: "node.js", price: "69$"},
-      {title: "java.js", price: "59$"},
+      {title: "react.js", price: "79$", id: 1 },
+      {title: "node.js", price: "69$", id: 2},
+      {title: "java.js", price: "59$",id: 3}
     ]);
   };
 
@@ -70,7 +70,7 @@ const App = () => {
   <div className='container' id='title'>
     <h1>shopping app</h1>
     {products.map((product) =>{
-      return <Product name={product.title} price={product.price} />;
+      return <Product name={product.title} price={product.price} key={product.id} />;
     })}
     <button onClick={clickHandler}>Change Price</button>
   </div> 

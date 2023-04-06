@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import HookObject from './HookObject';
-import HookArray from './HoojArray';
-// import App from './app';
+// import HookArray from './HoojArray';
+import App from './app';
 // import HookCounter from './HookCounter';
 // import ConterClass from './classCounter';
-
+import './index.css'
 // import HookCounter from './HookCounter';
 
 
@@ -18,4 +18,4 @@ import HookArray from './HoojArray';
 //     );
 // }
 
-ReactDOM.render(<HookArray />, document.getElementById("root"))
+ReactDOM.render(<App />, document.getElementById("root"))
