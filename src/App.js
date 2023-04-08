@@ -1,6 +1,6 @@
 // import React, {useState } from 'react';
 import Product from "./product";
-import React, {useState} from 'react';
+import React, {Component} from 'react';
 import './app.css'
 
 
@@ -8,29 +8,42 @@ import './app.css'
 
 // class component!!!!!!!!!!!!!!!!!!!
 
-// class App extends React.Component{
+class App extends React.Component{
 
-//     state = {
-//         Products:[
-//             {title:"react.js", price:"99$"},
-//             {title:"node.js", price:"89$"},
-//             {title:"vue.js", price:"79$"},
-//         ]
-//     }
+    state = {
+        Products:[
+            {title:"react.js", price:"99$"},
+            {title:"node.js", price:"89$"},
+            {title:"vue.js", price:"79$"},
+        ],
+        count: 0,
+    };
 
-//     render() {
-//         return(
-//              <div className='container' id='title'>
-//              <h1>shopping app</h1>
-//             {this.state.Products.map((product) =>{
-//                 return <Product name={product.title} price={product.price} />;
-//             })}
-//              </div>
+    clickHandler = () =>{
+         this.setState({
+            Products: [
+                {title:"react.js", price:"79$"},
+                {title:"node.js", price:"69$"},
+                {title:"vue.js", price:"59$"},
+            ],
+         });
+        }
+    render() {
+        return(
+             <div className='container' id='title'>
+             <h1>shopping app</h1>
+            {this.state.Products.map((product, index) =>{
+                return <Product name={product.title} price={product.price} key={index}/>;
+            })}
+            <button onClick={this.clickHandler} className="product">
+                change price
+            </button>
+             </div>
             
-//         );
-//     };
-// }
-// export default App;
+        );
+    };
+}
+export default App;
 
 // const App = ()=> {
 //   return (
@@ -50,32 +63,32 @@ import './app.css'
 
 
 
-const App = () => {
+// const App = () => {
 
-  const [products,setProducts] = useState([
-    {title: "react.js", price: "99$", id: 1},
-    {title: "node.js", price: "89$", id: 2},
-    {title: "java.js", price: "79$", id: 3},
-  ]);
+//   const [products,setProducts] = useState([
+//     {title: "react.js", price: "99$", id: 1},
+//     {title: "node.js", price: "89$", id: 2},
+//     {title: "java.js", price: "79$", id: 3},
+//   ]);
 
-  const clickHandler = () => {
-    setProducts([
-      {title: "react.js", price: "79$", id: 1 },
-      {title: "node.js", price: "69$", id: 2},
-      {title: "java.js", price: "59$",id: 3}
-    ]);
-  };
+//   const clickHandler = () => {
+//     setProducts([
+//       {title: "react.js", price: "79$", id: 1 },
+//       {title: "node.js", price: "69$", id: 2},
+//       {title: "java.js", price: "59$",id: 3}
+//     ]);
+//   };
 
-  return ( 
-  <div className='container' id='title'>
-    <h1>shopping app</h1>
-    {products.map((product) =>{
-      return <Product name={product.title} price={product.price} key={product.id} />;
-    })}
-    <button onClick={clickHandler}>Change Price</button>
-  </div> 
-  );
-};
+//   return ( 
+//   <div className='container' id='title'>
+//     <h1>shopping app</h1>
+//     {products.map((product) =>{
+//       return <Product name={product.title} price={product.price} key={product.id} />;
+//     })}
+//     <button onClick={clickHandler}>Change Price</button>
+//   </div> 
+//   );
+// };
  
-export default App;
+// export default App;
 
