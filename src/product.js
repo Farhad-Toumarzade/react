@@ -2,11 +2,14 @@
 import styles from './product.module.css';
 
 const product = (props) => {
-    console.log(props);
+    // console.log(props);
     return (
         <div className={styles.product}>
             <p>product name : {props.name} course</p>
             <p>product price : {props.price} </p>
+            <button onClick={props.onDelete}>
+                delete 
+            </button>
         </div>
     );
 

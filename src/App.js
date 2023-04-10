@@ -1,6 +1,6 @@
 // import React, {useState } from 'react';
 // import Product from "./product";
-import React, {Component} from 'react';
+import React, {} from 'react';
 import './app.css'
 import ProductList from "./product/ProductList";
 
