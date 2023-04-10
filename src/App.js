@@ -1,7 +1,8 @@
 // import React, {useState } from 'react';
-import Product from "./product";
+// import Product from "./product";
 import React, {Component} from 'react';
 import './app.css'
+import ProductList from "./product/ProductList";
 
 
 
@@ -11,11 +12,7 @@ import './app.css'
 class App extends React.Component{
 
     state = {
-        Products:[
-            {title:"react.js", price:"99$"},
-            {title:"node.js", price:"89$"},
-            {title:"vue.js", price:"79$"},
-        ],
+        
         count: 0,
     };
 
@@ -32,9 +29,7 @@ class App extends React.Component{
         return(
              <div className='container' id='title'>
              <h1>shopping app</h1>
-            {this.state.Products.map((product, index) =>{
-                return <Product name={product.title} price={product.price} key={index}/>;
-            })}
+                <ProductList />
             <button onClick={this.clickHandler} className="product">
                 change price
             </button>
