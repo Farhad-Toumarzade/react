@@ -16,23 +16,23 @@ class App extends React.Component{
         count: 0,
     };
 
-    clickHandler = () =>{
-         this.setState({
-            Products: [
-                {title:"react.js", price:"79$"},
-                {title:"node.js", price:"69$"},
-                {title:"vue.js", price:"59$"},
-            ],
-         });
-        }
+    // clickHandler = () =>{
+    //      this.setState({
+    //         Products: [
+    //             {title:"react.js", price:"79$"},
+    //             {title:"node.js", price:"69$"},
+    //             {title:"vue.js", price:"59$"},
+    //         ],
+    //      });
+    //     }
     render() {
         return(
              <div className='container' id='title'>
              <h1>shopping app</h1>
                 <ProductList />
-            <button onClick={this.clickHandler} className="product">
+             {/* <button onClick={this.clickHandler} className="product">
                 change price
-            </button>
+            </button>  */}
              </div>
             
         );

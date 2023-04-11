@@ -3,9 +3,9 @@ import Product from '../product';
 
 class ProductList extends Component {
     state = { Products:[
-        {title:"react.js", price:"99$", id:1},
-        {title:"node.js", price:"89$", id:2},
-        {title:"vue.js", price:"79$", id:3},
+        {title:"react.js", price:"99$", id:1, quantity: 1},
+        {title:"node.js", price:"89$", id:2, quantity: 2},
+        {title:"vue.js", price:"79$", id:3, quantity: 3},
     ],
  }
 //  state => Handler !
@@ -21,7 +21,7 @@ class ProductList extends Component {
         return (
             <div >
                 {this.state.Products.map((product, index) =>{
-                return <Product name={product.title} price={product.price} key={index} onDelete={() => this.removeHandler(product.id)}/>;
+                return <Product product={product} key={index} onDelete={() => this.removeHandler(product.id)}/>;
             })}
             </div >
         );

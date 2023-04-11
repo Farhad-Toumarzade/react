@@ -7,4 +7,30 @@
     justify-content: space-around;
     width: 40rem;
     margin-top: 20px;
+    color: rgb(45, 45, 45);
+
+}
+.button{
+    color: rgb(149, 1, 149);
+    background-color: white;
+    padding: 5px 10px;
+    border: 1px solid rgb(149, 1, 149);
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+.inc{
+    background-color: rgb(255, 206, 255);
+}
+.value{
+    color: rgb(149, 1, 149);
+    background-color: rgb(255, 206, 255) ;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+
 }
