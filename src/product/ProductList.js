@@ -10,7 +10,7 @@ class ProductList extends Component {
  }
 //  state => Handler !
  removeHandler = (id) => {
-    console.log("clicked", id);
+    // console.log("clicked", id);
 
     const filteredProducts = this.state.Products.filter((p) => p.id !== id);
     this.setState({ Products: filteredProducts});
@@ -23,13 +23,19 @@ class ProductList extends Component {
     console.log(products);
     this.setState({products})
  }
- deIncrementHandler = (id) =>{
+ decrementHandler = (id) => {
     const products = [...this.state.Products];
     const selectedItem = products.find((p) => p.id === id);
-    selectedItem.quantity--;
-    console.log(products);
-    this.setState({products})
- }
+    if (selectedItem.quantity === 1) {
+        const filteredProducts = products.filter((p) => p.id !== id);
+        this.setState({ products: filteredProducts});
+        console.log("clicked")
+    }else{
+        selectedItem.quantity--;
+        // console.log(products);
+        this.setState({ products });
+    };
+};
  changeHandler = (event, id) =>{
     // console.log(event.target.value, id);
     const products = [...this.state.Products];
@@ -44,7 +50,7 @@ class ProductList extends Component {
                 return <Product product={product} key={index} 
                 onDelete={() => this.removeHandler(product.id)}
                 onIncrement={() => this.incrementHandler(product.id)}
-                onDeIncrement={() => this.deIncrementHandler(product.id)}
+                onDecrement={() => this.decrementHandler(product.id)}
                 onChange= {(e)=> this.changeHandler(e, product.id)}
                 />;
             })}

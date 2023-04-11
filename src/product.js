@@ -10,10 +10,10 @@ const product = (props) => {
             <span className={styles.value}>{props.product.quantity}</span>
             <input className={styles.input} type='text' onChange={props.onChange} value={props.product.title}/>
             <button  onClick={props.onIncrement} className={`${styles.button} ${styles.inc}`}>
-                increment
+                +
             </button>
-            <button onClick={props.onDeIncrement} className={`${styles.button} ${styles.DeI}`}>
-                DeIncrement
+            <button onClick={props.onDecrement} className={`${styles.button} ${styles.DeI}`}>
+                -
             </button>
             <button onClick={props.onDelete} className={styles.button}>
                 delete 
