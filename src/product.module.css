@@ -5,7 +5,7 @@
 
     display: flex;
     justify-content: space-around;
-    width: 40rem;
+    width: 60rem;
     margin-top: 20px;
     color: rgb(45, 45, 45);
 
@@ -33,4 +33,19 @@
     align-items: center;
     font-size: 14px;
 
+}
+.DeI{
+    color: rgb(255, 192, 255);
+    background-color: rgb(255, 92, 255) ;
+}
+
+.input{
+    outline: none;
+    border: 1px solid rgb(149, 1, 149);
+    border-radius: 5px;
+    padding: 5px 2px;
+    color: rgb(149, 1, 149);
+}
+.input:focus{
+    border: 3px solid rgb(149, 1, 149);
 }

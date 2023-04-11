@@ -16,12 +16,37 @@ class ProductList extends Component {
     this.setState({ Products: filteredProducts});
     //  this. setstate({product:{}});
  }
-    
+ incrementHandler = (id) =>{
+    const products = [...this.state.Products];
+    const selectedItem = products.find((p) => p.id === id);
+    selectedItem.quantity++;
+    console.log(products);
+    this.setState({products})
+ }
+ deIncrementHandler = (id) =>{
+    const products = [...this.state.Products];
+    const selectedItem = products.find((p) => p.id === id);
+    selectedItem.quantity--;
+    console.log(products);
+    this.setState({products})
+ }
+ changeHandler = (event, id) =>{
+    // console.log(event.target.value, id);
+    const products = [...this.state.Products];
+    const selectedItem = products.find((p) => p.id === id);
+    selectedItem.title = event.target.value; 
+    this.setState({products})
+ }
     render() { 
         return (
             <div >
                 {this.state.Products.map((product, index) =>{
-                return <Product product={product} key={index} onDelete={() => this.removeHandler(product.id)}/>;
+                return <Product product={product} key={index} 
+                onDelete={() => this.removeHandler(product.id)}
+                onIncrement={() => this.incrementHandler(product.id)}
+                onDeIncrement={() => this.deIncrementHandler(product.id)}
+                onChange= {(e)=> this.changeHandler(e, product.id)}
+                />;
             })}
             </div >
         );
