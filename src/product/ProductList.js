@@ -24,16 +24,16 @@ class ProductList extends Component {
     this.setState({products})
  }
  decrementHandler = (id) => {
-    const products = [...this.state.Products];
-    const selectedItem = products.find((p) => p.id === id);
+    const Products = [...this.state.Products];
+    const selectedItem = Products.find((p) => p.id === id);
     if (selectedItem.quantity === 1) {
-        const filteredProducts = products.filter((p) => p.id !== id);
-        this.setState({ products: filteredProducts});
+        const filteredProducts = Products.filter((p) => p.id !== id);
+        this.setState({ Products: filteredProducts});
         console.log("clicked")
     }else{
         selectedItem.quantity--;
-        // console.log(products);
-        this.setState({ products });
+        // console.log(Products);
+        this.setState({ Products });
     };
 };
  changeHandler = (event, id) =>{
@@ -43,17 +43,32 @@ class ProductList extends Component {
     selectedItem.title = event.target.value; 
     this.setState({products})
  }
-    render() { 
-        return (
-            <div >
-                {this.state.Products.map((product, index) =>{
-                return <Product product={product} key={index} 
+
+renderProduct = () => {
+    if (this.state.Products.length === 0)
+        return <div>there is no product in cart.</div>;
+
+        return this.state.Products.map((product, index) =>{
+                return (
+                <Product product={product} key={index} 
                 onDelete={() => this.removeHandler(product.id)}
                 onIncrement={() => this.incrementHandler(product.id)}
                 onDecrement={() => this.decrementHandler(product.id)}
                 onChange= {(e)=> this.changeHandler(e, product.id)}
-                />;
-            })}
+                />
+                );
+            }
+
+            );
+    };
+
+
+
+    render() { 
+        return (
+            <div >
+               {!this.state.Products.length && <div>go to shopping</div> }
+               {this.renderProduct()}
             </div >
         );
     }
