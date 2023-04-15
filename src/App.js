@@ -3,6 +3,7 @@
 import React, {} from 'react';
 import './app.css'
 import ProductList from "./product/ProductList";
+import NavBar from "./component/NavBar"
 
 
 
@@ -12,9 +13,46 @@ import ProductList from "./product/ProductList";
 class App extends React.Component{
 
     state = {
-        
-        count: 0,
+        Products:[
+            {title:"react.js", price:"99$", id:1, quantity: 1},
+            {title:"node.js", price:"89$", id:2, quantity: 2},
+            {title:"vue.js", price:"79$", id:3, quantity: 3},
+        ],
     };
+    removeHandler = (id) => {
+        // console.log("clicked", id);
+    
+        const filteredProducts = this.state.Products.filter((p) => p.id !== id);
+        this.setState({ Products: filteredProducts});
+        //  this. setstate({product:{}});
+     }
+     incrementHandler = (id) =>{
+        const products = [...this.state.Products];
+        const selectedItem = products.find((p) => p.id === id);
+        selectedItem.quantity++;
+        console.log(products);
+        this.setState({products})
+     }
+     decrementHandler = (id) => {
+        const Products = [...this.state.Products];
+        const selectedItem = Products.find((p) => p.id === id);
+        if (selectedItem.quantity === 1) {
+            const filteredProducts = Products.filter((p) => p.id !== id);
+            this.setState({ Products: filteredProducts});
+            console.log("clicked")
+        }else{
+            selectedItem.quantity--;
+            // console.log(Products);
+            this.setState({ Products });
+        };
+    };
+     changeHandler = (event, id) =>{
+        // console.log(event.target.value, id);
+        const products = [...this.state.Products];
+        const selectedItem = products.find((p) => p.id === id);
+        selectedItem.title = event.target.value; 
+        this.setState({products})
+     }
 
     // clickHandler = () =>{
     //      this.setState({
@@ -28,8 +66,14 @@ class App extends React.Component{
     render() {
         return(
              <div className='container' id='title'>
-             <h1>shopping app</h1>
-                <ProductList />
+               <NavBar totalItems={this.state.Products.filter((p) => p.quantity > 0).length} />
+                <ProductList
+                Products={this.state.Products}
+                onRemove={this.removeHandler}
+                onIncrement={this.incrementHandler}
+                onDecrement={this.decrementHandler}
+                onChange={this.changeHandler}
+                />
              {/* <button onClick={this.clickHandler} className="product">
                 change price
             </button>  */}
