@@ -46,16 +46,17 @@ class ProductList extends Component {
 //  }
 
 renderProduct = () => {
-    if (this.props.Products.length === 0)
+    const {onRemove, onIncrement, onDecrement, onChange, Products} = this.props
+    if (Products.length === 0)
         return <div>there is no product in cart.</div>;
 
-        return this.props.Products.map((product, index) =>{
+        return Products.map((product, index) =>{
                 return (
                 <Product product={product} key={index} 
-                onDelete={() => this.props.onRemove(product.id)}
-                onIncrement={() => this.props.onIncrement(product.id)}
-                onDecrement={() => this.props.onDecrement(product.id)}
-                onChange= {(e)=> this.props.onChange(e, product.id)}
+                onDelete={() => onRemove(product.id)}
+                onIncrement={() => onIncrement(product.id)}
+                onDecrement={() => onDecrement(product.id)}
+                onChange= {(e)=> onChange(e, product.id)}
                 />
                 );
             }
@@ -66,9 +67,10 @@ renderProduct = () => {
 
 
     render() { 
+        const {Products} = this.props;
         return (
             <div >
-               {!this.props.Products.length && <div>go to shopping</div> }
+               {!Products.length && <div>go to shopping</div> }
                {this.renderProduct()}
             </div >
         );

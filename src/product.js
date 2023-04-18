@@ -2,21 +2,21 @@
 import styles from './product.module.css';
 import { BiTrash } from "react-icons/bi";
 
-const product = (props) => {
-    // console.log(props);
+const Product = ({onChange, onIncrement, onDecrement, product, onDelete}) => {
+    // console.log(;
     return (
         <div className={styles.product}>
-            <p>product name : {props.product.title} course</p>
-            <p>product price : {props.product.price} </p>
-            <span className={styles.value}>{props.product.quantity}</span>
-            <input className={styles.input} type='text' onChange={props.onChange} value={props.product.title}/>
-            <button  onClick={props.onIncrement} className={`${styles.button} ${styles.inc}`}>
+            <p>product name : {product.title} course</p>
+            <p>product price : {product.price} </p>
+            <span className={styles.value}>{product.quantity}</span>
+            <input className={styles.input} type='text' onChange={onChange} value={product.title}/>
+            <button  onClick={onIncrement} className={`${styles.button} ${styles.inc}`}>
                 +
             </button>
-            <button onClick={props.onDecrement} className={`${styles.button} ${props.product.quantity === 1 && styles.Dec}`}>
-                {props.product.quantity > 1 ? "-" : <BiTrash />}
+            <button onClick={onDecrement} className={`${styles.button} ${product.quantity === 1 && styles.Dec}`}>
+                {product.quantity > 1 ? "-" : <BiTrash />}
             </button>
-            <button onClick={props.onDelete} className={styles.button}>
+            <button onClick={onDelete} className={styles.button}>
                 delete 
             </button>
         </div>
@@ -24,7 +24,7 @@ const product = (props) => {
 
 };
 
-export default product;
+export default Product;
 
 
 // ====>>  estefade az module dar css va sakht className uniqe!
