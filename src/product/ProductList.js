@@ -3,6 +3,7 @@ import Product from '../product';
 
 
 class ProductList extends Component {
+
     // state = { Products:[
     //     {title:"react.js", price:"99$", id:1, quantity: 1},
     //     {title:"node.js", price:"89$", id:2, quantity: 2},
@@ -67,6 +68,7 @@ renderProduct = () => {
 
 
     render() { 
+        console.log('productList.js render')
         const {Products} = this.props;
         return (
             <div >

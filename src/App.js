@@ -11,6 +11,10 @@ import NavBar from "./component/NavBar"
 // class component!!!!!!!!!!!!!!!!!!!
 
 class App extends React.Component{
+    constructor(props){
+        super(props)
+        console.log('app.js constructor')
+    }
 
     state = {
         Products:[
@@ -54,6 +58,11 @@ class App extends React.Component{
         this.setState({products})
      }
 
+
+     componentDidMount() {
+        console.log('app.js componentDidMount')
+     }
+
     // clickHandler = () =>{
     //      this.setState({
     //         Products: [
@@ -64,6 +73,7 @@ class App extends React.Component{
     //      });
     //     }
     render() {
+        console.log('app.js render')
         return(
              <div className='container' id='title'>
                <NavBar totalItems={this.state.Products.filter((p) => p.quantity > 0).length} />

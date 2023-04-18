@@ -3,7 +3,7 @@ import styles from './product.module.css';
 import { BiTrash } from "react-icons/bi";
 
 const Product = ({onChange, onIncrement, onDecrement, product, onDelete}) => {
-    // console.log(;
+    console.log('product.js render')
     return (
         <div className={styles.product}>
             <p>product name : {product.title} course</p>

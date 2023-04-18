@@ -1,6 +1,7 @@
 import styles from "./navbar.module.css"
 
 const NavBar = (props) => {
+    console.log('NavBar.js render')
     return ( 
         <header className={styles.navBar} >
             <h2>
