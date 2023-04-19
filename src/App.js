@@ -31,11 +31,27 @@ class App extends React.Component{
         //  this. setstate({product:{}});
      }
      incrementHandler = (id) =>{
+        // const products = [...this.state.Products];
+        // const selectedItem = products.find((p) => p.id === id);
+        // selectedItem.quantity++;
+        // // console.log(products);
+        // this.setState({products})
+
+
+
+        // 1. id => ok!
+        //  2. index
+        const index = this.state.Products.findIndex((item) => item.id === id);
+        console.log(index);
+        // 3. clone the selected index and update the quantity
+        const product = { ...this.state.Products[index]};
+        product.quantity++;
+
+        // 4. update products
         const products = [...this.state.Products];
-        const selectedItem = products.find((p) => p.id === id);
-        selectedItem.quantity++;
-        console.log(products);
-        this.setState({products})
+        products[index] = product;
+        this.setState({products});
+
      }
      decrementHandler = (id) => {
         const Products = [...this.state.Products];
@@ -62,6 +78,16 @@ class App extends React.Component{
      componentDidMount() {
         console.log('app.js componentDidMount')
      }
+
+     componentDidUpdate(prevProps, prevState) {
+        console.log('App.js componentDidUpdate');
+        console.log('App.js', prevState)
+     }
+
+     shouldComponentUpdate(nextProps, nextState) {
+        return true;
+     }
+
 
     // clickHandler = () =>{
     //      this.setState({
