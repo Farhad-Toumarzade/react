@@ -42,36 +42,50 @@ class App extends React.Component{
         // 1. id => ok!
         //  2. index
         const index = this.state.Products.findIndex((item) => item.id === id);
-        console.log(index);
+        
         // 3. clone the selected index and update the quantity
-        const product = { ...this.state.Products[index]};
+        const product = { ...this.state.Products[index] };
         product.quantity++;
 
         // 4. update products
-        const products = [...this.state.Products];
-        products[index] = product;
-        this.setState({products});
-
-     }
-     decrementHandler = (id) => {
         const Products = [...this.state.Products];
-        const selectedItem = Products.find((p) => p.id === id);
-        if (selectedItem.quantity === 1) {
-            const filteredProducts = Products.filter((p) => p.id !== id);
-            this.setState({ Products: filteredProducts});
-            console.log("clicked")
-        }else{
-            selectedItem.quantity--;
-            // console.log(Products);
+        Products[index] = product;
+        this.setState({ Products });
+
+     };
+     decrementHandler = (id) => {
+        //1.id==> ok
+        //2.index
+        const index = this.state.Products.findIndex((item) => item.id === id);
+
+        // 3. clone the selected index and update the qty:
+        const product = {...this.state.Products[index]};
+        if (product.quantity === 1) {
+            const filteredProducts = this.state.Products.filter((p) => p.id !== id);
+            this.setState({Products: filteredProducts});
+            
+        } else {
+            // 4. update products
+            const Products = [...this.state.Products];
+            product.quantity--;
+            Products[index] = product;
             this.setState({ Products });
-        };
+        }
+
     };
      changeHandler = (event, id) =>{
-        // console.log(event.target.value, id);
-        const products = [...this.state.Products];
-        const selectedItem = products.find((p) => p.id === id);
-        selectedItem.title = event.target.value; 
-        this.setState({products})
+       // 1. id=> ok
+       // 2. index
+       const index = this.state.Products.findIndex((item) => item.id === id);
+       console.log(index);
+       // 3. clone the selected index and update the qty;
+        const product = { ...this.state.Products[index] };
+        product.title = event.target.value;
+
+       //4. update products
+       const Products = [...this.state.Products];
+       Products[index] = product;
+       this.setState({ Products }); 
      }
 
 
